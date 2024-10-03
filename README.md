@@ -75,4 +75,4 @@ acts_as_follower
 フォロー機能の実装、フォロワーのリストやフォロー状況など確認できる
 
 画面遷移図
-Figma： https://www.figma.com/design/R9c6mabrSvuLxq3VAYcJ7m/Untitled?node-id=0-1&t=2ghUIUVdcn65jSBl-1
+Figma： https://www.figma.com/design/R9c6mabrSvuLxq3VAYcJ7m/Untitled?node-id=0-1&t=h9z3J0CHzvqJk79f-1
