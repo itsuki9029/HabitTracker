@@ -76,3 +76,6 @@ acts_as_follower
 
 画面遷移図
 Figma： https://www.figma.com/design/R9c6mabrSvuLxq3VAYcJ7m/Untitled?node-id=0-1&t=h9z3J0CHzvqJk79f-1
+
+ER図
+https://drive.google.com/file/d/18tD25nOb3nr8e5EyhVH8cbCcW-d1vy8-/view?usp=sharing
