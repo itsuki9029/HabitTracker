@@ -1,8 +1,13 @@
-FROM --platform=linux/arm64 ruby:3.1.0
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-WORKDIR /app
-COPY Gemfile Gemfile.lock /app/
-RUN gem install bundler
+FROM ruby:3.2.0
+ENV APP /railsapp
+ENV LANG C.UTF-8
+ENV TZ Asia/Tokyo
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt update -qq \
+ && apt install -y build-essential mariadb-client nodejs \
+ && npm install --global yarn
+RUN yarn add @fortawesome/fontawesome-free @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons
+WORKDIR $APP
+COPY Gemfile $APP/Gemfile
+COPY Gemfile.lock $APP/Gemfile.lock
 RUN bundle install
-COPY . /app
-CMD ["rails", "server", "-b", "0.0.0.0"]
