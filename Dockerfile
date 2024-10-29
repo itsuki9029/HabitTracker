@@ -1,13 +1,15 @@
-FROM ruby:3.2.0
-ENV APP /railsapp
-ENV LANG C.UTF-8
-ENV TZ Asia/Tokyo
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
-RUN apt update -qq \
- && apt install -y build-essential mariadb-client nodejs \
- && npm install --global yarn
-RUN yarn add @fortawesome/fontawesome-free @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons
-WORKDIR $APP
-COPY Gemfile $APP/Gemfile
-COPY Gemfile.lock $APP/Gemfile.lock
+FROM ruby:3.0-alpine
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache gcompat && \
+    apk add --no-cache linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git bash && \
+    apk add --virtual build-packages --no-cache build-base curl-dev
+RUN mkdir /myapp
+WORKDIR /myapp
+ADD Gemfile /myapp/Gemfile
+ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
+RUN apk del build-packages
+ADD . /myapp
+EXPOSE 4000
+CMD ["rails", "server", "-b", "0.0.0.0"]
