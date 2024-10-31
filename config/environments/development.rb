@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "habit-tracker-broken-cherry-4621.fly.dev"
+  config.hosts << "habit-tracker-withered-glitter-4322.fly.dev"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
