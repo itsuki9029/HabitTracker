@@ -1,0 +1,14 @@
+<h1>習慣管理アプリ</h1>
+
+<% @habits.each do |habit| %>
+  <div class="habit">
+    <h2><%= link_to habit.title, habit %></h2>
+    <p>作成者: <%= habit.user.email %></p>
+    <p>通知: <%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></p>
+
+    <% if current_user == habit.user %>
+      <%= link_to '編集', edit_habit_path(habit), class: 'btn btn-primary' %>
+      <%= link_to '削除', habit, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+<% end %>

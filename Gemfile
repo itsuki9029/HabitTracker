@@ -27,6 +27,18 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'devise', "~> 4.9.4"             # ユーザー認証
+
+gem 'simple_form', "~> 5.3.1"        # フォームヘルパー
+
+gem 'bootstrap', '~> 5.3.3' # フロントエンドスタイル
+
+gem 'jquery-rails', '~> 4.6.0'
+
+gem 'rails-i18n', "~> 7.0.10"         # 多言語対応
+
+gem 'sassc-rails'  #bootstrap-rubygemがSassエンジン（例：sassc-rails、cssbundling-rails、dartsass-railsなど）を依存関係として必要としている
+
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
