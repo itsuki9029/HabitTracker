@@ -2,10 +2,23 @@
 
 <% @habits.each do |habit| %>
   <div class="habit">
-    <h2><%= link_to habit.title, habit %></h2>
-    <p>作成者: <%= habit.user.email %></p>
+    <!-- 習慣の名前（habit_name）を表示 -->
+    <h2><%= link_to habit.habit_name, habit %></h2>
+
+    <!-- 作成者の情報を表示 -->
+    <p>作成者: <%= habit.user.username %></p>
+
+    <!-- 通知時間を表示 -->
     <p>通知: <%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></p>
 
+    <!-- 説明（description）を表示 -->
+    <p>説明: <%= habit.description %></p>
+
+    <!-- 開始日（start_date）と終了日（end_date）を表示 -->
+    <p>開始日: <%= habit.start_date %></p>
+    <p>終了日: <%= habit.end_date %></p>
+
+    <!-- 編集と削除ボタン（現在のユーザーが作成者の場合のみ表示） -->
     <% if current_user == habit.user %>
       <%= link_to '編集', edit_habit_path(habit), class: 'btn btn-primary' %>
       <%= link_to '削除', habit, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
