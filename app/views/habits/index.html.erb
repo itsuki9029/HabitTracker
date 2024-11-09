@@ -1,18 +1,31 @@
 <h1>習慣管理アプリ</h1>
 
-<% @habits.each do |habit| %>
-  <div class="habit">
-    <h2><%= link_to habit.habit_name, habit %></h2>
-
-    <p>作成者: <%= habit.user.username %></p>
-    <p>通知: <%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></p>
-    <p>説明: <%= habit.description %></p>
-    <p>開始日: <%= habit.start_date %></p>
-    <p>終了日: <%= habit.end_date %></p>
-
-    <% if current_user == habit.user %>
-      <%= link_to '編集', edit_habit_path(habit), class: 'btn btn-primary' %>
-      <%= link_to '削除', habit, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+<div class="row">
+  <!-- 左側: カレントユーザーの習慣一覧 -->
+  <div class="col-md-6">
+    <h2>あなたの習慣</h2>
+    <% @habits.where(user: current_user).each do |habit| %>
+      <div class="habit">
+        <h3><%= link_to habit.habit_name, habit %></h3>
+        <p>説明: <%= habit.description %></p>
+        <p>通知: <%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></p>
+        <p>開始日〜終了日: <%= habit.start_date %> 〜 <%= habit.end_date %></p>
+      </div>
     <% end %>
   </div>
-<% end %>
+
+  <!-- 右側: 他のユーザーの習慣一覧 -->
+  <div class="col-md-6">
+    <h2>他のユーザーの習慣</h2>
+    <% @habits.where.not(user: current_user).each do |habit| %>
+      <div class="habit">
+        <h3><%= link_to habit.habit_name, habit %></h3>
+        <p>作成者: <%= habit.user.username %></p>
+        <p>通知: <%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></p>
+        <p>説明: <%= habit.description %></p>
+        <p>開始日: <%= habit.start_date %></p>
+        <p>終了日: <%= habit.end_date %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
