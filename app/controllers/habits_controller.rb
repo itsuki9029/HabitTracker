@@ -39,7 +39,10 @@ class HabitsController < ApplicationController
   private
 
   def set_habit
-    @habit = Habit.find(params[:id])
+    @habit = Habit.find_by(id: params[:id])
+    if @habit.nil?
+      redirect_to habits_path, alert: '指定された習慣は見つかりませんでした。'
+    end
   end
 
   def habit_params

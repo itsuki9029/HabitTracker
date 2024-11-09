@@ -12,7 +12,7 @@
 <% if current_user == @habit.user %>
   <div class="actions">
     <%= link_to '編集', edit_habit_path(@habit), class: 'btn btn-primary' %>
-    <%= link_to '削除', habit_path(@habit), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+    <%= link_to '削除', habit_path(@habit), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
   </div>
 <% end %>
 
