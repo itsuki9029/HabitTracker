@@ -1,0 +1,19 @@
+<h1>習慣の詳細</h1>
+
+<div class="habit-details">
+  <p><strong>習慣名:</strong> <%= @habit.habit_name %></p>
+  <p><strong>説明:</strong> <%= @habit.description %></p>
+  <p><strong>通知:</strong> <%= @habit.notification_time.strftime('%A %H:%M') if @habit.notification_time %></p>
+  <p><strong>開始日〜終了日:</strong> <%= @habit.start_date %> 〜 <%= @habit.end_date %></p>
+  <p><strong>作成日:</strong> <%= @habit.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+  <p><strong>作成者:</strong> <%= @habit.user.username.presence || '匿名ユーザー' %></p>
+</div>
+
+<% if current_user == @habit.user %>
+  <div class="actions">
+    <%= link_to '編集', edit_habit_path(@habit), class: 'btn btn-primary' %>
+    <%= link_to '削除', habit_path(@habit), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', habits_path, class: 'btn btn-secondary' %>
