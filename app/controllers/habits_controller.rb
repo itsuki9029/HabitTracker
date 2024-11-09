@@ -21,6 +21,21 @@ class HabitsController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    if @habit.update(habit_params)
+      redirect_to @habit, notice: '習慣が更新されました。'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @habit.destroy
+    redirect_to habits_path, notice: '習慣が削除されました。'
+  end
+
   private
 
   def set_habit

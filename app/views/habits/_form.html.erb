@@ -27,3 +27,7 @@
   <%= form.label :end_date %>
   <%= form.date_field :end_date %>
 </div>
+
+<div class="actions">
+  <%= form.submit form.object.new_record? ? '作成する' : '更新する', class: 'btn btn-primary' %>
+</div>

@@ -1,0 +1,7 @@
+<h1>習慣の編集</h1>
+
+<%= form_with(model: @habit, local: true) do |form| %>
+  <%= render 'form', form: form %>
+<% end %>
+
+<%= link_to 'キャンセル', habit_path(@habit), class: 'btn btn-secondary' %>
