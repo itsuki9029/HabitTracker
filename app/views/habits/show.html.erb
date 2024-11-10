@@ -31,6 +31,12 @@
             <p class="me-3"><strong><%= comment.user.username.presence || '匿名ユーザー' %></strong></p>
             <p class="flex-grow-1"><%= comment.content %></p>
             <p class="text-muted ms-3"><%= comment.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+            <% if current_user == comment.user %>
+              <div class="ms-3">
+                <%= link_to '編集', edit_habit_comment_path(@habit, comment), class: 'btn btn-sm btn-outline-primary' %>
+                <%= link_to '削除', habit_comment_path(@habit, comment), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-outline-danger' %>
+              </div>
+            <% end %>
           </div>
           <hr>
         <% end %>

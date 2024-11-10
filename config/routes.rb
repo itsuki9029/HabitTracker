@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :habits do
-    resources :comments, only: :create
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
   resources :users, only: [:show]
 end
