@@ -1,5 +1,6 @@
 class Habit < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   validates :habit_name, presence: true, length: { maximum: 30 }
   validates :description, length: { maximum: 100 }
