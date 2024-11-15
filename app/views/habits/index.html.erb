@@ -5,8 +5,17 @@
   <div class="col-md-6">
     <h2>あなたの習慣</h2>
     <% @habits.where(user: current_user).each do |habit| %>
-      <div class="habit">
-        <h3><%= link_to habit.habit_name, habit %></h3>
+      <div class="habit border p-3 mb-3">
+        <div class="d-flex align-items-center mb-2">
+          <!-- チェックボックス -->
+          <% progress = habit.progress_for_today(current_user) %>
+          <%= check_box_tag "habit_#{habit.id}_progress", progress.id, progress.checked, 
+                data: { habit_id: habit.id, controller: "habit-checkbox", action: "change->habit-checkbox#toggleCheckbox" }, 
+                class: 'habit-checkbox me-2' %>
+
+          <!-- 習慣名のリンク -->
+          <h3 class="mb-0"><%= link_to habit.habit_name, habit %></h3>
+        </div>
         <p>説明: <%= habit.description %></p>
         <p>通知: <%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></p>
         <p>開始日〜終了日: <%= habit.start_date %> 〜 <%= habit.end_date %></p>
@@ -18,13 +27,21 @@
   <div class="col-md-6">
     <h2>他のユーザーの習慣</h2>
     <% @habits.where.not(user: current_user).each do |habit| %>
-      <div class="habit">
-        <h3><%= link_to habit.habit_name, habit %></h3>
+      <div class="habit border p-3 mb-3">
+        <div class="d-flex align-items-center mb-2">
+          <!-- チェックボックス（他のユーザーの習慣はチェック不可） -->
+          <% progress = habit.progress_for_today(habit.user) %>
+          <%= check_box_tag "habit_#{habit.id}_progress", progress.id, progress.checked, 
+                data: { habit_id: habit.id }, 
+                class: 'habit-checkbox me-2', 
+                disabled: true %>
+
+          <!-- 習慣名のリンク -->
+          <h3 class="mb-0"><%= link_to habit.habit_name, habit %></h3>
+        </div>
         <p>作成者: <%= habit.user.username %></p>
-        <p>通知: <%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></p>
         <p>説明: <%= habit.description %></p>
-        <p>開始日: <%= habit.start_date %></p>
-        <p>終了日: <%= habit.end_date %></p>
+        <p>開始日〜終了日: <%= habit.start_date %> 〜 <%= habit.end_date %></p>
       </div>
     <% end %>
   </div>

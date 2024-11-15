@@ -41,6 +41,8 @@ gem 'sassc-rails'  #bootstrap-rubygemがSassエンジン（例：sassc-rails、c
 
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
+gem 'whenever', "~> 1.0.0"            # cronでの通知スケジュール管理
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

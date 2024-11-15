@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.12"
+    "@hotwired/turbo-rails": "^8.0.12",
+    "@rails/request.js": "^0.0.11"
   }
 }
