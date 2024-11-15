@@ -1,0 +1,27 @@
+<h1>プロフィール編集</h1>
+<%= form_with(model: @user, local: true, method: :patch) do |form| %>
+
+  <div class="mb-3">
+    <%= form.label :username, "ユーザー名" %>
+    <%= form.text_field :username, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, "メールアドレス" %>
+    <%= form.email_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :profile_image, "プロフィール画像" %>
+    <%= form.file_field :profile_image, class: "form-control" %>
+    <% if @user.profile_image.present? %>
+      <p>現在のプロフィール画像:</p>
+      <%= image_tag @user.profile_image.url, alt: "プロフィール画像", size: "150x150" %>
+    <% end %>
+  </div>
+
+  <div class="mb-3 d-flex">
+    <%= form.submit "更新", class: "btn btn-primary me-2" %>
+    <%= link_to '戻る', user_path(@user), class: "btn btn-secondary" %>
+  </div>
+<% end %>

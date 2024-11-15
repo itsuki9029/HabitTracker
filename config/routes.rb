@@ -9,5 +9,5 @@ Rails.application.routes.draw do
       patch 'toggle_progress', to: 'habit_progresses#toggle'
     end
   end
-  resources :users, only: [:show]
+  resources :users
 end

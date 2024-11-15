@@ -43,6 +43,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem 'whenever', "~> 1.0.0"            # cronでの通知スケジュール管理
 
+gem 'carrierwave', "~> 3.0.7"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
