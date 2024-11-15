@@ -1,2 +1,13 @@
-<h1><%= @user.email %>さんのマイページ</h1>
-<p>他のユーザー情報を表示する場合はこちらに記述してください。</p>
+<h1>プロフィール</h1>
+<div class="profile">
+  <% if @user.profile_image.present? %>
+    <%= image_tag @user.profile_image.url, alt: "プロフィール画像", size: "150x150" %>
+  <% else %>
+    <%= image_tag "default_avatar.png", alt: "デフォルト画像", size: "150x150" %>
+  <% end %>
+
+  <p>ユーザー名: <%= @user.username %></p>
+  <p>メールアドレス: <%= @user.email %></p>
+
+  <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-primary' %>
+</div>
