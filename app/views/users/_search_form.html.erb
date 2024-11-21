@@ -1,0 +1,7 @@
+<%= search_form_for @q, url: request.path, method: :get do |f| %>
+  <div class="mb-3">
+    <%= f.label :username_cont, "ユーザー名検索" %>
+    <%= f.text_field :username_cont, class: "form-control", placeholder: "ユーザー名を入力" %>
+  </div>
+  <%= f.submit "検索", class: "btn btn-primary mb-3" %>
+<% end %>
