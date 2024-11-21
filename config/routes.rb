@@ -9,5 +9,12 @@ Rails.application.routes.draw do
       patch 'toggle_progress', to: 'habit_progresses#toggle'
     end
   end
-  resources :users
+  resources :users do
+    member do
+      post 'follow', to: 'users#follow'
+      delete 'unfollow', to: 'users#unfollow'
+      get 'followers'
+      get 'following'
+    end
+  end
 end

@@ -8,6 +8,13 @@
 
   <p>ユーザー名: <%= @user.username %></p>
   <p>メールアドレス: <%= @user.email %></p>
+  <p>フォロー数: <%= @user.following.count %></p>
+  <p>フォロワー数: <%= @user.followers.count %></p>
 
-  <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-primary' %>
+  <!-- ログインユーザーが自分のプロフィールを表示している場合のみボタンを表示 -->
+  <% if current_user == @user %>
+    <%= link_to 'フォロー 一覧', following_user_path(@user), class: 'btn btn-primary mb-2' %>
+    <%= link_to 'フォロワー 一覧', followers_user_path(@user), class: 'btn btn-primary mb-2' %>
+    <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-primary mb-2' %>
+  <% end %>
 </div>

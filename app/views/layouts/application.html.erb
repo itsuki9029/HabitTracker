@@ -13,9 +13,11 @@
   <body>
     <!-- ヘッダーとナビゲーションバー -->
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg" style="background-color: #545454;">
         <div class="container">
-          <%= link_to 'ハビトラ Habit Tracker', root_path, class: 'navbar-brand' %>
+          <%= link_to root_path, class: 'navbar-brand' do %>
+            <%= image_tag 'dd4d85b0e6890294139f848015e897bb.jpg', alt: 'ハビトラ', width: 300, height: 100, class: 'd-inline-block align-text-top' %>
+          <% end %>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,14 +25,14 @@
             <ul class="navbar-nav ms-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to '習慣一覧', habits_path, class: 'nav-link' %>
+                  <%= link_to '習慣一覧', habits_path, class: 'nav-link text-white' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '習慣作成', new_habit_path, class: 'nav-link' %>
+                  <%= link_to '習慣作成', new_habit_path, class: 'nav-link text-white' %>
                 </li>
                 <!-- プロフィール画像とプルダウンメニュー -->
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <% if current_user.profile_image.present? %>
                       <%= image_tag current_user.profile_image.url, class: "rounded-circle", width: 50, height: 50, alt: "プロフィール画像" %>
                     <% else %>
@@ -44,10 +46,10 @@
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+                  <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-white' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link' %>
+                  <%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link text-white' %>
                 </li>
               <% end %>
             </ul>
