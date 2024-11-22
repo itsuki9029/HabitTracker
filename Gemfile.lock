@@ -108,6 +108,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.12.1)
+      devise (>= 4.9.0)
     erubi (1.13.0)
     execjs (2.10.0)
     ffi (1.17.0-aarch64-linux-musl)
@@ -289,6 +291,7 @@ DEPENDENCIES
   carrierwave (~> 3.0.7)
   debug
   devise (~> 4.9.4)
+  devise-i18n (~> 1.12.1)
   importmap-rails
   jbuilder
   jquery-rails (~> 4.6.0)

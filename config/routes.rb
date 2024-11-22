@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'comments/create'
-  root "habits#index"
+  root 'home#index'
   devise_for :users
 
   resources :habits do
