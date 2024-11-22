@@ -29,6 +29,8 @@ gem "jbuilder"
 
 gem 'devise', "~> 4.9.4"             # ユーザー認証
 
+gem 'devise-i18n', "~> 1.12.1"                     # 多言語対応
+
 gem 'simple_form', "~> 5.3.1"        # フォームヘルパー
 
 gem 'bootstrap', '~> 5.3.3' # フロントエンドスタイル
