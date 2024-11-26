@@ -1,64 +1,34 @@
-<h2><%= @user.username %>のフォロワー</h2>
+<div class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white text-center">
+      <h1><%= @user.username %>の<%= action_name == 'followers' ? 'フォロワー' : 'フォロー中のユーザー' %></h1>
+    </div>
+    <div class="card-body">
+      <!-- 検索フォーム -->
+      <%= render 'search_form' %>
 
-<!-- 検索フォームの表示 -->
-<%= render 'search_form' %>
-
-<!-- 検索結果の表示 -->
-<% if params[:q].present? %> <!-- 検索フォームが送信された場合のみ表示 -->
-  <h3>検索結果</h3>
-  <ul class="list-group mt-3">
-    <% if @search_results.present? %>
-      <% @search_results.each do |user| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center">
-            <% if user.profile_image.present? && user.profile_image.url.present? %>
-              <%= image_tag user.profile_image.url, alt: user.username, class: "rounded-circle", width: 50, height: 50 %>
-            <% else %>
-              <%= image_tag "default_avatar.png", alt: user.username, class: "rounded-circle", width: 50, height: 50 %>
+      <% if params[:q].present? %>
+        <h3 class="mt-4">検索結果</h3>
+        <ul class="list-group">
+          <% if @search_results.present? %>
+            <% @search_results.each do |user| %>
+              <%= render 'follow_button', user: user %>
             <% end %>
-            <%= link_to user.username, user_path(user), class: "text-decoration-none ms-3" %>
-          </div>
-          <div>
-            <% if current_user.following?(user) %>
-              <%= button_to 'フォロー解除', unfollow_user_path(user), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
-            <% else %>
-              <%= button_to 'フォロー', follow_user_path(user), method: :post, class: 'btn btn-primary btn-sm' %>
-            <% end %>
-          </div>
-        </li>
+          <% else %>
+            <li class="list-group-item">該当するユーザーがいません。</li>
+          <% end %>
+        </ul>
       <% end %>
-    <% else %>
-      <p>該当するユーザーがいません。</p>
-    <% end %>
-  </ul>
-<% end %> <!-- 検索結果の表示終了 -->
 
-<!-- フォロワーリストの表示 -->
-<h3>フォロワー一覧</h3>
-<ul class="list-group mt-3">
-  <% if @followers.present? %>
-    <% @followers.each do |follower| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center">
-          <% if follower.profile_image.present? %>
-            <%= image_tag follower.profile_image.url, alt: follower.username, class: "rounded-circle", width: 50, height: 50 %>
-          <% else %>
-            <%= image_tag "default_avatar.png", alt: "デフォルト画像", class: "rounded-circle", width: 50, height: 50 %>
-          <% end %>
-          <%= link_to follower.username, user_path(follower), class: "text-decoration-none ms-3" %>
-        </div>
-        <div>
-          <% if current_user.following?(follower) %>
-            <%= button_to 'フォロー解除', unfollow_user_path(follower), method: :delete, class: 'btn btn-outline-danger btn-sm' %>
-          <% else %>
-            <%= button_to 'フォロー', follow_user_path(follower), method: :post, class: 'btn btn-primary btn-sm' %>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
-  <% else %>
-    <p>フォロワーがいません。</p>
-  <% end %>
-</ul>
-
-<%= link_to '戻る', user_path(@user), class: 'btn btn-secondary mt-3' %>
+      <h3 class="mt-4"><%= action_name == 'followers' ? 'フォロワー一覧' : 'フォロー中のユーザー一覧' %></h3>
+      <ul class="list-group">
+        <% (@followers || @following).each do |user| %>
+          <%= render 'follow_button', user: user %>
+        <% end %>
+      </ul>
+      <div class="d-flex justify-content-center mt-3">
+        <%= link_to '戻る', user_path(@user), class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,38 @@
-<h1>プロフィール</h1>
-<div class="profile">
-  <% if @user.profile_image.present? %>
-    <%= image_tag @user.profile_image.url, alt: "プロフィール画像", size: "150x150" %>
-  <% else %>
-    <%= image_tag "default_avatar.png", alt: "デフォルト画像", size: "150x150" %>
-  <% end %>
+<div class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white text-center">
+      <h1>プロフィール</h1>
+    </div>
+    <div class="card-body">
+      <div class="text-center mb-4">
+        <% if @user.profile_image.present? %>
+          <%= image_tag @user.profile_image.url, alt: "プロフィール画像", class: "rounded-circle", size: "150x150" %>
+        <% else %>
+          <%= image_tag "default_avatar.png", alt: "デフォルト画像", class: "rounded-circle", size: "150x150" %>
+        <% end %>
+      </div>
 
-  <p>ユーザー名: <%= @user.username %></p>
-  <p>メールアドレス: <%= @user.email %></p>
-  <p>フォロー数: <%= @user.following.count %></p>
-  <p>フォロワー数: <%= @user.followers.count %></p>
+      <dl class="row">
+        <dt class="col-sm-4 mb-3">ユーザー名</dt>
+        <dd class="col-sm-8 mb-3"><%= @user.username %></dd>
 
-  <!-- ログインユーザーが自分のプロフィールを表示している場合のみボタンを表示 -->
-  <% if current_user == @user %>
-    <%= link_to 'フォロー 一覧', following_user_path(@user), class: 'btn btn-primary mb-2' %>
-    <%= link_to 'フォロワー 一覧', followers_user_path(@user), class: 'btn btn-primary mb-2' %>
-    <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-primary mb-2' %>
-  <% end %>
+        <dt class="col-sm-4 mb-3">メールアドレス</dt>
+        <dd class="col-sm-8 mb-3"><%= @user.email %></dd>
+
+        <dt class="col-sm-4 mb-3">フォロー数</dt>
+        <dd class="col-sm-8 mb-3"><%= @user.following.count %></dd>
+
+        <dt class="col-sm-4 mb-3">フォロワー数</dt>
+        <dd class="col-sm-8 mb-3"><%= @user.followers.count %></dd>
+      </dl>
+
+      <% if current_user == @user %>
+        <div class="d-flex justify-content-center mt-4 gap-2">
+          <%= link_to 'フォロー一覧', following_user_path(@user), class: 'btn btn-primary mb-2 w-25' %>
+          <%= link_to 'フォロワー一覧', followers_user_path(@user), class: 'btn btn-primary mb-2 w-25' %>
+          <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-primary mb-2 w-25' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
