@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "habit-tracker-withered-glitter-4322.fly.dev"
+  config.hosts << "habittracker-b0jn.onrender.com"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
