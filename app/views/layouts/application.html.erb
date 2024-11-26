@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>ハビトラ</title>
+    <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,55 +11,8 @@
     <%=yield(:customjs) %>
   </head>
 
-  <body>
-    <!-- ヘッダーとナビゲーションバー -->
-    <header>
-      <nav class="navbar navbar-expand-lg" style="background-color: #545454;">
-        <div class="container">
-          <%= link_to root_path, class: 'navbar-brand' do %>
-            <%= image_tag 'dd4d85b0e6890294139f848015e897bb.jpg', alt: 'ハビトラ', width: 300, height: 100, class: 'd-inline-block align-text-top' %>
-          <% end %>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to '習慣一覧', habits_path, class: 'nav-link text-white' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to '習慣作成', new_habit_path, class: 'nav-link text-white' %>
-                </li>
-                <!-- プロフィール画像とプルダウンメニュー -->
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <% if current_user.profile_image.present? %>
-                      <%= image_tag current_user.profile_image.url, class: "rounded-circle", width: 50, height: 50, alt: "プロフィール画像" %>
-                    <% else %>
-                      <%= image_tag "default_avatar.png", class: "rounded-circle", width: 50, height: 50, alt: "デフォルト画像" %>
-                    <% end %>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><%= link_to 'プロフィール', user_path(current_user), class: 'dropdown-item' %></li>
-                    <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "本当にログアウトしますか？" }, class: 'dropdown-item' %></li>
-                  </ul>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-white' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link text-white' %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- メインコンテンツ -->
+  <body class="d-flex flex-column min-vh-100">
+    <%= render 'shared/header' %>
     <div class="container mt-4">
       <% if notice %>
         <div class="alert alert-success"><%= notice %></div>
@@ -69,12 +23,6 @@
 
       <%= yield %>
     </div>
-
-    <!-- フッター -->
-    <footer class="footer bg-dark text-white text-center mt-auto py-3">
-      <div class="container">
-        <p class="mb-0">&copy; 2024 ハビトラ. All rights reserved.</p>
-      </div>
-    </footer>
+    <%= render 'shared/footer' %>
   </body>
 </html>

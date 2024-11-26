@@ -1,5 +1,18 @@
-<h1>新しい習慣を作成</h1>
+<div class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white text-center">
+      <h1>新しい習慣を作成</h1>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: @habit, local: true) do |form| %>
+        <%= render 'form', form: form %>
+      <% end %>
 
-<%= form_with(model: @habit, local: true) do |form| %>
-  <%= render 'form', form: form %>
-<% end %>
+      <% if action_name == 'edit' %>
+        <div class="text-center mt-4">
+          <%= link_to 'キャンセル', habit_path(@habit), class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
