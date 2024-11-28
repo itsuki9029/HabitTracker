@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: habit-tracker
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      DATABASE_URL:
+        fromDatabase:
+          name: habit-tracker-db
+          property: connectionString
+    healthCheckPath: /
+    autoDeploy: true
+
+  - type: database
+    name: habit-tracker-db
+    plan: free
+    engine: postgresql
+    version: 16

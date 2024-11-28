@@ -6,7 +6,7 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
-      POSTGRES_USER: user
+      POSTGRES_USER: postgres
     restart: always
 
   web:
@@ -25,8 +25,6 @@ services:
       - db
     environment:
       RAILS_ENV: production
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: user
 
 volumes:
   postgres_volume:
