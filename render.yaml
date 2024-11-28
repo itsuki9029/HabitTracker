@@ -1,19 +1,24 @@
+databases:
+  - name: itsuki9029postgresql
+    databaseName: itsuki9029postgresql
+    user: habit-tracker
+    region: singapore
+    plan: free
+
 services:
   - type: web
     name: habit-tracker
-    env: docker
+    env: ruby
+    region: singapore
     plan: free
-    dockerfilePath: ./Dockerfile
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      DATABASE_URL:
+      - key: DATABASE_URL
         fromDatabase:
-          name: habit-tracker-db
+          name: itsuki9029postgresql
           property: connectionString
-    healthCheckPath: /
-    autoDeploy: true
-
-  - type: database
-    name: habit-tracker-db
-    plan: free
-    engine: postgresql
-    version: 16
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
