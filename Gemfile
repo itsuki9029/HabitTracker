@@ -29,7 +29,7 @@ gem "jbuilder"
 
 gem 'devise', "~> 4.9.4"             # ユーザー認証
 
-gem 'devise-i18n', "~> 1.12.1"                     # 多言語対応
+gem 'devise-i18n', "~> 1.12.1"       # 多言語対応
 
 gem 'simple_form', "~> 5.3.1"        # フォームヘルパー
 
@@ -48,6 +48,14 @@ gem 'whenever', "~> 1.0.0"            # cronでの通知スケジュール管理
 gem 'carrierwave', "~> 3.0.7"
 
 gem 'ransack', "~> 4.2.1"
+
+gem "line-bot-api", "~> 1.29"
+
+gem 'omniauth-line' #LINEログイン
+
+gem 'omniauth-rails_csrf_protection'
+
+gem 'dotenv-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false

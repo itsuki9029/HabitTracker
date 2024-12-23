@@ -1,0 +1,23 @@
+/* LINEログインボタンのスタイル */
+.btn-line {
+  background-color: #06C755; /* LINE公式の緑色 */
+  color: #FFFFFF; /* ボタン内テキストの色 */
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.btn-line:hover {
+  background-color: #05B14B; /* ホバー時の少し濃い緑色 */
+}
+
+.line-icon {
+  height: 20px; /* ロゴの高さを調整 */
+  width: 20px;  /* ロゴの幅を調整 */
+}

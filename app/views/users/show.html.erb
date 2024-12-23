@@ -33,6 +33,11 @@
           <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-primary mb-2 w-25' %>
         </div>
       <% end %>
+      <% if current_user.line_user_id.present? %>
+        <p>LINEアカウントが連携されています。</p>
+      <% else %>
+        <%= link_to 'LINEアカウントを連携する', user_line_omniauth_authorize_path, class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -26,6 +26,13 @@
         <% end %>
 
         <a href="#" class="fs-6 d-block my-4 text-decoration-none"> パスワードを忘れた？</a>
+
+        <!-- LINEでログインボタン -->
+        <hr class="my-4" />
+        <%= link_to user_line_omniauth_authorize_path, class: "btn btn-line w-100 d-flex align-items-center justify-content-center" do %>
+          <%= image_tag "btn_base.png", alt: "LINE Icon", class: "line-icon me-2" %>
+          <span>LINEでログイン</span>
+        <% end %>
       </div>
     </div>
 
