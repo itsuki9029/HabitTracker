@@ -19,7 +19,10 @@
             <h1 class="mb-0 fw-bold"><%= @habit.habit_name %></h1>
           </div>
           <p class="mb-5"><strong>説明:</strong> <%= @habit.description %></p>
-          <p class="mb-5"><strong>通知:</strong> <%= @habit.notification_time&.strftime('%A %H:%M') || 'なし' %></p>
+          <p class="mb-5"><strong>通知:</strong>
+            <%= @habit.notification_days.present? ? @habit.notification_days.map(&:capitalize).join(', ') : 'なし' %> 
+            <%= @habit.notification_time.present? ? @habit.notification_time.strftime("%H:%M") : '' %>
+          </p>
           <p class="mb-5"><strong>期間:</strong> <%= @habit.start_date %> 〜 <%= @habit.end_date %></p>
           <p class="mb-5"><strong>作成日:</strong> <%= @habit.created_at.strftime('%Y-%m-%d %H:%M') %></p>
           <p class="mb-5"><strong>作成者:</strong> <%= @habit.user.username.presence || '匿名ユーザー' %></p>

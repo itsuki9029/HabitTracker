@@ -19,6 +19,23 @@
   <%= form.text_area :description, class: "form-control", rows: 4, placeholder: "この習慣の目的や詳細を入力してください" %>
 </div>
 
+<div class="form-group mb-3">
+  <%= form.label :notification_days, "通知する曜日", class: "form-label fw-bold" %><br>
+  <% %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each do |day| %>
+    <div class="form-check form-check-inline">
+      <%= form.check_box :notification_days, { multiple: true, class: 'form-check-input', id: "notification_days_#{day.downcase}" }, day, nil %>
+      <%= form.label :notification_days, day.capitalize, class: 'form-check-label' %>
+    </div>
+  <% end %>
+</div>
+
+<div class="form-group mb-3">
+  <%= form.label :notification_time, "通知する時間", class: "form-label fw-bold" %>
+  <div class="d-inline-flex align-items-center">
+    <%= form.time_select :notification_time, { default: Time.now.change(min: 0) }, class: "form-select me-1" %>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-6 mb-3">
     <%= form.label :start_date, "開始日", class: "form-label fw-bold" %>

@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'comments/create'
   root 'home#index'
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
 
   resources :habits do
     resources :comments, only: [:create, :edit, :update, :destroy]
