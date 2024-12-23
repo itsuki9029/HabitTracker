@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.hosts << "habitora9029.com"
-  # config.hosts << "habit-tracker-zt83.onrender.com"
+  config.hosts << "habit-tracker-zt83.onrender.com"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
