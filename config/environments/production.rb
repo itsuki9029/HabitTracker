@@ -4,6 +4,7 @@ Rails.application.configure do
   config.force_ssl = true
   config.hosts << "habitora9029.com"
   config.hosts << "www.habitora9029.com"
+  config.hosts << 'www.habit-tracker9029.com'
   config.hosts << "habit-tracker-zt83.onrender.com"
 
   # Code is not reloaded between requests.
