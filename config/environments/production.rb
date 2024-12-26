@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.hosts << "habitora9029.com"
+  config.hosts << "www.habitora9029.com"
   config.hosts << "habit-tracker-zt83.onrender.com"
 
   # Code is not reloaded between requests.
