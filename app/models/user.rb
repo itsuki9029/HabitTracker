@@ -30,6 +30,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:line] # LINE認証
 
+  validates :username, presence: true, uniqueness: true
+  validates :email, uniqueness: true, allow_blank: true
+
   def social_profile(provider)
     social_profiles.select { |sp| sp.provider == provider.to_s }.first
   end
@@ -56,6 +59,16 @@ class User < ApplicationRecord
       user.email = auth.info.email || "dummy-email-#{auth.uid}@example.com"
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
+    end
+  end
+
+  # Deviseの認証条件にusernameを追加
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if (email_or_username = conditions.delete(:email))
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: email_or_username.downcase }]).first
+    else
+      where(conditions.to_h).first
     end
   end
 end
