@@ -57,6 +57,8 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'dotenv-rails'
 
+gem 'fog-aws'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
