@@ -28,6 +28,12 @@
 
                   <dt class="col-sm-4 mb-2">開始日〜終了日</dt>
                   <dd class="col-sm-8 mb-2"><%= habit.start_date %> 〜 <%= habit.end_date %></dd>
+
+                  <dt class="col-sm-4 mb-2">いいね</dt>
+                  <dd class="col-sm-8 mb-2">
+                    <div id="habit_<%= habit.id %>_like">
+                      <%= render "habits/like", habit: habit %>
+                    </div>
                 </dl>
               </div>
             <% end %>
@@ -67,6 +73,12 @@
 
                   <dt class="col-sm-4 mb-2">開始日〜終了日</dt>
                   <dd class="col-sm-8 mb-2"><%= habit.start_date %> 〜 <%= habit.end_date %></dd>
+
+                  <dt class="col-sm-4 mb-2">いいね</dt>
+                  <dd class="col-sm-8 mb-2">
+                    <div id="habit_<%= habit.id %>_like">
+                      <%= render "habits/like", habit: habit %>
+                    </div>
                 </dl>
               </div>
             <% end %>

@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   }
 
   resources :habits do
-    resources :comments, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: %i[create edit update destroy]
+    resource :likes, only: %i[create destroy]
     member do
       patch 'toggle_progress', to: 'habit_progresses#toggle'
     end
   end
+
   resources :users do
     member do
       post 'follow', to: 'users#follow'

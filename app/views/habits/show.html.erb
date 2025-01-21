@@ -26,6 +26,7 @@
           <p class="mb-5"><strong>期間:</strong> <%= @habit.start_date %> 〜 <%= @habit.end_date %></p>
           <p class="mb-5"><strong>作成日:</strong> <%= @habit.created_at.strftime('%Y-%m-%d %H:%M') %></p>
           <p class="mb-5"><strong>作成者:</strong> <%= @habit.user.username.presence || '匿名ユーザー' %></p>
+          <p class="mb-5"><strong>いいね:</strong> <%= @habit.likes.count %></p>
         </div>
         <% if current_user == @habit.user %>
           <div class="card-footer text-center bg-light border-0">

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :habits, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   # 自分がフォローしているユーザーとの関連
   has_many :active_follows, class_name: 'Follow', foreign_key: :follower_id, dependent: :destroy
   has_many :following, through: :active_follows, source: :followee
