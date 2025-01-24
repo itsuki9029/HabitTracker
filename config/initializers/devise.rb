@@ -8,6 +8,8 @@ Devise.setup do |config|
 
   config.skip_session_storage = [:http_auth]
 
+  config.mailer_sender = ENV['SMTP_USERNAME']
+
   config.stretches = Rails.env.test? ? 1 : 12
   config.reconfirmable = true
   config.expire_all_remember_me_on_sign_out = true

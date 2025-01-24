@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   root 'home#index'
   devise_for :users, controllers: {
-    omniauth_callbacks: 'omniauth_callbacks'
+    omniauth_callbacks: 'omniauth_callbacks',
   }
 
   resources :habits do
@@ -26,4 +26,6 @@ Rails.application.routes.draw do
       get 'following'
     end
   end
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

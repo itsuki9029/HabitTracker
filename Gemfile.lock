@@ -145,8 +145,6 @@ GEM
     fog-xml (0.1.5)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    font-awesome-sass (6.5.2)
-      sassc (~> 2.0)
     formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -179,6 +177,11 @@ GEM
       childprocess (~> 5.0)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
+      rexml
     line-bot-api (1.29.1)
     logger (1.6.1)
     loofah (2.23.1)
@@ -380,11 +383,10 @@ DEPENDENCIES
   devise-i18n (~> 1.12.1)
   dotenv-rails
   fog-aws
-  font-awesome-sass (~> 6.5.1)
   importmap-rails
   jbuilder
   jquery-rails (~> 4.6.0)
-  letter_opener
+  letter_opener_web
   line-bot-api (~> 1.29)
   meta-tags
   omniauth-line
