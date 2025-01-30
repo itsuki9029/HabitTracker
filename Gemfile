@@ -61,6 +61,8 @@ gem 'fog-aws'
 
 gem "meta-tags"
 
+gem 'concurrent-ruby', '1.3.4'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

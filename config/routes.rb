@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   root 'home#index'
   devise_for :users, controllers: {
-    omniauth_callbacks: 'omniauth_callbacks',
+    omniauth_callbacks: 'omniauth_callbacks'
   }
 
   resources :habits do

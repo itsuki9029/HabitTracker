@@ -1,32 +1,26 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def line
-    process_callback("LINE")
-  end
-
-  def failure
-    redirect_to root_path
+    basic_action
   end
 
   private
 
-  def process_callback(provider_name)
+  def basic_action
     @omniauth = request.env["omniauth.auth"]
     if @omniauth.present?
-      @user = User.from_omniauth(@omniauth)
-      if @user.persisted?
-        sign_in_and_redirect @user, event: :authentication
-        set_flash_message(:notice, :success, kind: provider_name) if is_navigational_format?
-      else
-        session["devise.#{@omniauth['provider']}_data"] = @omniauth.except("extra")
-        redirect_to new_user_registration_url
+      @profile = User.find_or_initialize_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
+      if @profile.email.blank?
+        email = @omniauth["info"]["email"] ? @omniauth["info"]["email"] : "#{@omniauth["uid"]}-#{@omniauth["provider"]}@example.com"
+        @profile = current_user || User.create!(provider: @omniauth["provider"], uid: @omniauth["uid"], email: email, name: @omniauth["info"]["name"], password: Devise.friendly_token[0, 20])
       end
-    else
-      flash[:alert] = "#{provider_name}ログインに失敗しました。"
-      redirect_to new_user_session_path
+      @profile.set_values(@omniauth)
+      sign_in(:user, @profile)
     end
+    flash[:notice] = "ログインしました"
+    redirect_to root_path
   end
-
+	# ダミーのemailアドレスを作成するメソッド
   def fake_email(uid, provider)
-    "#{uid}-#{provider}@example.com"
+    "#{auth.uid}-#{auth.provider}@example.com"
   end
 end

@@ -20,5 +20,5 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
-  config.omniauth :line, ENV['LINE_KEY'], ENV['LINE_SECRET'], scope: 'profile openid email'
+  config.omniauth :line, ENV['LINE_KEY'], ENV['LINE_SECRET']
 end

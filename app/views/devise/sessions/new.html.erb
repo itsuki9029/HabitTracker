@@ -29,10 +29,11 @@
 
         <!-- LINEでログインボタン -->
         <hr class="my-4" />
-        <%= link_to user_line_omniauth_authorize_path, class: "btn btn-line w-100 d-flex align-items-center justify-content-center" do %>
-          <%= image_tag "btn_base.png", alt: "LINE Icon", class: "line-icon me-2" %>
-          <span>LINEでログイン</span>
-        <% end %>
+        <div class="d-flex justify-content-center"> 
+          <% resource_class.omniauth_providers.each do |provider| %>
+            <%= button_to "#{OmniAuth::Utils.camelize(provider)}でログイン", omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: false }, class: "btn btn-line w-30 px-4 text-center" %>
+          <% end %>
+        </div>
       </div>
     </div>
 
