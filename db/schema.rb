@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_17_233056) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_02_074904) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,14 +49,14 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_17_233056) do
   create_table "habits", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
-    t.datetime "notification_time"
+    t.time "notification_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "habit_name"
     t.text "description"
     t.date "start_date"
     t.date "end_date"
-    t.json "notification_days", default: []
+    t.jsonb "notification_days", default: []
     t.index ["user_id"], name: "index_habits_on_user_id"
   end
 

@@ -14,5 +14,7 @@ module Myapp
     config.hosts << "habitora9029.com"
     config.hosts << "www.habitora9029.com"  #ホスト先が認められないエラー対策
     config.hosts << "habit-tracker-zt83.onrender.com"
+    config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
   end
 end

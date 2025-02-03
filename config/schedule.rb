@@ -3,5 +3,5 @@ every 1.day, at: '0:00 am' do
 end
 
 every 1.minute do
-  runner "Habit.notify_users"
+  runner "PushLineJob.perform_later"
 end
