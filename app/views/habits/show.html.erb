@@ -27,6 +27,11 @@
           <p class="mb-5"><strong>作成日:</strong> <%= @habit.created_at.strftime('%Y-%m-%d %H:%M') %></p>
           <p class="mb-5"><strong>作成者:</strong> <%= @habit.user.username.presence || '匿名ユーザー' %></p>
           <p class="mb-5"><strong>いいね:</strong> <%= @habit.likes.count %></p>
+          <p class="mb-5"><strong>タグ:</strong>
+            <% @habit.tags.each do |tag| %>
+              <%= link_to tag.name, habits_path(tag: tag.name), class: 'badge custom-tag rounded-pill' %>
+            <% end %>
+          </p>
         </div>
         <% if current_user == @habit.user %>
           <div class="card-footer text-center bg-light border-0">
