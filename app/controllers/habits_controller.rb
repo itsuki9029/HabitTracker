@@ -3,7 +3,11 @@ class HabitsController < ApplicationController
   before_action :set_habit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @habits = Habit.all
+    if params[:tag]
+      @habits = Habit.tagged_with(params[:tag]).order(created_at: :desc)
+    else
+      @habits = Habit.all.order(created_at: :desc)
+    end
   end
 
   def new
@@ -46,6 +50,6 @@ class HabitsController < ApplicationController
   end
 
   def habit_params
-    params.require(:habit).permit(:habit_name, :description, :start_date, :end_date, :notification_time, notification_days: [] )
+    params.require(:habit).permit(:habit_name, :description, :start_date, :end_date, :tag_list, :notification_time, notification_days: [])
   end
 end

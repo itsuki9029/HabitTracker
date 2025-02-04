@@ -4,6 +4,8 @@ class Habit < ApplicationRecord
   has_many :habit_progresses, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  acts_as_taggable_on :tags
+
   validates :habit_name, presence: true, length: { maximum: 30 }
   validates :description, length: { maximum: 100 }
   validates :start_date, :end_date, presence: true

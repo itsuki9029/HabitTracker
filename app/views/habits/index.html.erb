@@ -34,6 +34,14 @@
                     <div id="habit_<%= habit.id %>_like">
                       <%= render "habits/like", habit: habit %>
                     </div>
+                  </dd>
+
+                  <dt class="col-sm-4 mb-2">タグ</dt>
+                  <dd class="col-sm-8 mb-2">
+                    <% habit.tags.each do |tag| %>
+                      <%= link_to tag.name, habits_path(tag: tag.name), class: "badge custom-tag rounded-pill" %>
+                    <% end %>
+                  </dd>
                 </dl>
               </div>
             <% end %>
