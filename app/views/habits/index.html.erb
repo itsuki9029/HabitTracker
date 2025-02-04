@@ -2,91 +2,12 @@
   <div class="row">
     <!-- 左側: カレントユーザーの習慣一覧 -->
     <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white text-center">
-          <h2>あなたの習慣</h2>
-        </div>
-        <div class="card-body">
-          <% if @habits.where(user: current_user).exists? %>
-            <% @habits.where(user: current_user).each do |habit| %>
-              <div class="habit border p-3 mb-3">
-                <div class="d-flex align-items-center mb-2">
-                  <!-- チェックボックス -->
-                  <% progress = habit.progress_for_today(current_user) %>
-                  <%= check_box_tag "habit_#{habit.id}_progress", progress.id, progress.checked, 
-                        data: { habit_id: habit.id, controller: "habit-checkbox", action: "change->habit-checkbox#toggleCheckbox" }, 
-                        class: 'habit-checkbox form-check-input me-2' %>
-                  <!-- 習慣名のリンク -->
-                  <h3 class="mb-0"><%= link_to habit.habit_name, habit %></h3>
-                </div>
-                <dl class="row">
-                  <dt class="col-sm-4 mb-2">説明</dt>
-                  <dd class="col-sm-8 mb-2"><%= habit.description %></dd>
-
-                  <dt class="col-sm-4 mb-2">通知</dt>
-                  <dd class="col-sm-8 mb-2"><%= habit.notification_time.strftime('%A %H:%M') if habit.notification_time %></dd>
-
-                  <dt class="col-sm-4 mb-2">開始日〜終了日</dt>
-                  <dd class="col-sm-8 mb-2"><%= habit.start_date %> 〜 <%= habit.end_date %></dd>
-
-                  <dt class="col-sm-4 mb-2">いいね</dt>
-                  <dd class="col-sm-8 mb-2">
-                    <div id="habit_<%= habit.id %>_like">
-                      <%= render "habits/like", habit: habit %>
-                    </div>
-                </dl>
-              </div>
-            <% end %>
-          <% else %>
-            <p class="text-center">まだ習慣が登録されていません。</p>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'habits/user_habits', habits: @habits.where(user: current_user) %>
     </div>
 
     <!-- 右側: 他のユーザーの習慣一覧 -->
     <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-header bg-secondary text-white text-center">
-          <h2>他のユーザーの習慣</h2>
-        </div>
-        <div class="card-body">
-          <% if @habits.where.not(user: current_user).exists? %>
-            <% @habits.where.not(user: current_user).each do |habit| %>
-              <div class="habit border p-3 mb-3">
-                <div class="d-flex align-items-center mb-2">
-                  <!-- チェックボックス（他のユーザーの習慣はチェック不可） -->
-                  <% progress = habit.progress_for_today(habit.user) %>
-                  <%= check_box_tag "habit_#{habit.id}_progress", progress.id, progress.checked, 
-                        data: { habit_id: habit.id }, 
-                        class: 'habit-checkbox form-check-input me-2', 
-                        disabled: true %>
-                  <!-- 習慣名のリンク -->
-                  <h3 class="mb-0"><%= link_to habit.habit_name, habit %></h3>
-                </div>
-                <dl class="row">
-                  <dt class="col-sm-4 mb-2">作成者</dt>
-                  <dd class="col-sm-8 mb-2"><%= habit.user.username %></dd>
-
-                  <dt class="col-sm-4 mb-2">説明</dt>
-                  <dd class="col-sm-8 mb-2"><%= habit.description %></dd>
-
-                  <dt class="col-sm-4 mb-2">開始日〜終了日</dt>
-                  <dd class="col-sm-8 mb-2"><%= habit.start_date %> 〜 <%= habit.end_date %></dd>
-
-                  <dt class="col-sm-4 mb-2">いいね</dt>
-                  <dd class="col-sm-8 mb-2">
-                    <div id="habit_<%= habit.id %>_like">
-                      <%= render "habits/like", habit: habit %>
-                    </div>
-                </dl>
-              </div>
-            <% end %>
-          <% else %>
-            <p class="text-center">他のユーザーの習慣はまだありません。</p>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'habits/other_users_habits', habits: @habits.where.not(user: current_user) %>
     </div>
   </div>
 </div>

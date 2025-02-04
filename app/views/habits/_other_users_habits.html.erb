@@ -1,0 +1,14 @@
+<div class="card custom-card shadow-sm">
+  <div class="card-header bg-secondary text-white text-center">
+    <h2>他のユーザーの習慣</h2>
+  </div>
+  <div class="card-body">
+    <% if habits.exists? %>
+      <% habits.each do |habit| %>
+        <%= render 'habits/habit', habit: habit, current_user: false %>
+      <% end %>
+    <% else %>
+      <p class="text-center text-white">他のユーザーの習慣はまだありません。</p>
+    <% end %>
+  </div>
+</div>
