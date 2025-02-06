@@ -65,6 +65,8 @@ gem 'concurrent-ruby', '1.3.4'
 
 gem 'acts-as-taggable-on'
 
+gem 'simple_calendar'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

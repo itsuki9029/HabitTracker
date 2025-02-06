@@ -1,0 +1,18 @@
+<div class="container my-5">
+  <div class="card shadow-sm custom-card">
+    <div class="card-header bg-primary text-white text-center">
+        <h1>達成記録</h1>
+    </div>
+
+    <%= month_calendar do |date| %>
+      <% all_completed = Habit.all_completed_for_date?(current_user, date, @progresses) %>
+
+      <div class="calendar-day <%= 'completed' if all_completed %>">
+        <span class="date-number"><%= date.day %></span>
+        <% if all_completed %>
+          <span class="stamp">✅</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

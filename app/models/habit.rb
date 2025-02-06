@@ -25,4 +25,16 @@ class Habit < ApplicationRecord
   def progress_for_today(user)
     habit_progresses.find_or_create_by(user: user, date: Date.current)
   end
+
+  def self.all_completed_for_date?(user, date, progresses)
+    habits = user.habits
+    return false if habits.empty?
+
+    progresses_for_date = progresses[date] || {}
+
+    user.habits.all? do |habit|
+      progress = progresses_for_date[habit.id]
+      progress&.checked == true
+    end
+  end
 end
