@@ -1,0 +1,53 @@
+.calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #f8f9fa; /* デフォルトの背景色 */
+  color: #333;
+  transition: 0.3s;
+}
+
+.completed {
+  background-color: #c3e6cb; /* 達成した日の背景色 */
+  color: #155724;
+  border: 2px solid #155724;
+}
+
+.date-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.stamp {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.calendar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .calendar-title {
+    color: white;
+    font-size: 2rem; /* テキストサイズを大きく */
+    font-weight: bold; /* フォントを太字に */
+    margin-left: 20px; /* 左側に余白を追加 */
+    margin-top: 10px; /* 上側に余白を追加 */
+    margin-bottom: 10px; /* 下側に余白を追加 */
+  }

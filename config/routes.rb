@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'calendar', to: 'calendars#show', as: 'calendar'
   get 'home/index'
   get 'comments/create'
   get '/contact', to: 'static_pages#contact'
