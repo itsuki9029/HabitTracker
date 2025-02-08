@@ -67,6 +67,8 @@ gem 'acts-as-taggable-on'
 
 gem 'simple_calendar'
 
+gem 'ruby-openai'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

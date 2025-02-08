@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'questions/new'
+  get 'questions/create'
   get 'calendar', to: 'calendars#show', as: 'calendar'
   get 'home/index'
   get 'comments/create'
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
       get 'following'
     end
   end
+
+  resources :questions, only: %i[new create]
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
