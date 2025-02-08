@@ -31,9 +31,7 @@
 
 <div class="form-group mb-3">
   <%= form.label :notification_time, "通知する時間", class: "form-label fw-bold" %>
-  <div class="d-inline-flex align-items-center">
-    <%= form.time_select :notification_time, { minute_step: 1, include_seconds: false }, class: "form-select me-1" %>
-  </div>
+  <%= form.time_select :notification_time, { minute_step: 1, include_seconds: false }, class: "form-select" %>
 </div>
 
 <div class="form-group mb-3">

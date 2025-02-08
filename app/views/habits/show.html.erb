@@ -32,6 +32,11 @@
               <%= link_to tag.name, habits_path(tag: tag.name), class: 'badge custom-tag rounded-pill' %>
             <% end %>
           </p>
+          <!-- 励ましの言葉の追加部分 -->
+          <hr>
+          <% if current_user == @habit.user %>
+            <p class="mb-5"><strong>ジョージからの言葉:</strong> <%= @encouragement %></p>
+          <% end %>
         </div>
         <% if current_user == @habit.user %>
           <div class="card-footer text-center bg-light border-0">

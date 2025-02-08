@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_04_072142) do
   create_table "habits", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
-    t.time "notification_time"
+    t.time "notification_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "habit_name"

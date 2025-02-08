@@ -16,5 +16,6 @@ module Myapp
     config.hosts << "habit-tracker-zt83.onrender.com"
     config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
   end
 end
