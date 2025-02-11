@@ -43,7 +43,7 @@ gem 'sassc-rails'  #bootstrap-rubygemがSassエンジン（例：sassc-rails、c
 
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
-gem 'whenever', "~> 1.0.0"            # cronでの通知スケジュール管理
+gem 'whenever', require: false           # cronでの通知スケジュール管理
 
 gem 'carrierwave', "~> 3.0.7"
 
@@ -88,6 +88,8 @@ group :development do
   gem "web-console"
 
   gem 'letter_opener_web'
+
+  gem 'listen'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
