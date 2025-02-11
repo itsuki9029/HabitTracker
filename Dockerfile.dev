@@ -4,6 +4,8 @@ RUN apk update && \
     apk add --no-cache gcompat && \
     apk add --no-cache linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql git bash vim g++ && \
     apk add --virtual build-packages --no-cache build-base curl-dev
+RUN apk add --no-cache cronie
+
 RUN mkdir /myapp
 WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
@@ -11,5 +13,9 @@ ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 RUN apk del build-packages
 ADD . /myapp
+
+COPY ./config/schedule.rb /myapp/config/schedule.rb
+
 EXPOSE 3000
-CMD ["sh", "-c", "rm -f /myapp/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p 3000 -e development"]
+
+CMD ["sh", "-c", "rm -f /myapp/tmp/pids/server.pid && bundle exec whenever --update-crontab && crond -f && bundle exec rails server -b 0.0.0.0 -p 3000 -e development"]
