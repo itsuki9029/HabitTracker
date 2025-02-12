@@ -19,6 +19,7 @@ class HabitsController < ApplicationController
     if @habit.save
       redirect_to habits_path, notice: '習慣が作成されました。'
     else
+      Rails.logger.debug @habit.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
