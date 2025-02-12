@@ -27,7 +27,10 @@
 
     <% if habit.notification_time.present? && current_user %>
       <dt class="col-sm-4 mb-2">通知</dt>
-      <dd class="col-sm-8 mb-2"><%= habit.notification_time.strftime('%A %H:%M') %></dd>
+      <dd class="col-sm-8 mb-2">
+        <%= habit.notification_days.present? ? habit.notification_days.map(&:capitalize).join(', ') : 'なし' %>
+        <%= habit.notification_time.strftime('%H:%M') %>
+      </dd>
     <% end %>
 
     <dt class="col-sm-4 mb-2">開始日〜終了日</dt>

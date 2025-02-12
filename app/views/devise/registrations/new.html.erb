@@ -26,6 +26,14 @@
           <%= f.submit "サインアップ", class: "btn btn-primary w-100" %>
         <% end %>
 
+        <!-- LINEでログインボタン -->
+        <hr class="my-4" />
+        <div class="d-flex justify-content-center"> 
+          <% resource_class.omniauth_providers.each do |provider| %>
+            <%= button_to "#{OmniAuth::Utils.camelize(provider)}でログイン", omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: false }, class: "btn btn-line w-30 px-4 text-center" %>
+          <% end %>
+        </div>
+
         <% if notice %>
           <p class="notice"><%= notice %></p>
         <% elsif alert %>
