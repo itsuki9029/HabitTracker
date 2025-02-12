@@ -1,11 +1,8 @@
-default: &default
-adapter: postgresql
-encoding: unicode
-host: db
-username: postgres
-password: password
-pool: 5
-
 test:
-<<: *default
-database: myapp_test_ci
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_test_ci
+  pool: 5
+  username: postgres
+  password: password
+  host: localhost
