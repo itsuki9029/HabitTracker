@@ -1,5 +1,5 @@
 <div class="habit border p-3 mb-3">
-  <div class="d-flex align-items-center mb-2">
+  <div class="d-flex align-items-center justify-content-center mb-2">
     <% progress = habit.progress_for_today(habit.user) %>
 
     <% if current_user %>
@@ -14,7 +14,9 @@
     <% end %>
 
     <!-- 習慣名のリンク -->
-    <h3 class="mb-0"><%= link_to habit.habit_name, habit %></h3>
+    <h3 class="mb-0">
+      <%= link_to habit.habit_name, habit, class: "habit-link" %>
+    </h3>
   </div>
   <dl class="row">
     <% unless current_user %>

@@ -7,7 +7,7 @@
           <h2 class="mb-0">習慣詳細</h2>
         </div>
         <div class="card-body">
-          <div class="d-flex align-items-center mb-4">
+          <div class="d-flex align-items-center justify-content-center mb-4">
             <!-- チェックボックス（作成者のみチェック可能） -->
             <% progress = @habit.progress_for_today(@habit.user) %>
             <%= check_box_tag "habit_#{@habit.id}_progress", progress.id, progress.checked, 
