@@ -23,7 +23,7 @@
   <%= form.label :notification_days, "通知する曜日", class: "form-label fw-bold" %><br>
   <% %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each do |day| %>
     <div class="form-check form-check-inline">
-      <%= form.check_box :notification_days, { multiple: true, class: 'form-check-input', id: "notification_days_#{day.downcase}" }, day, nil %>
+      <%= form.check_box :notification_days, { multiple: true, class: 'habit-checkbox form-check-input', id: "notification_days_#{day.downcase}" }, day, nil %>
       <%= form.label "notification_days", day.capitalize, class: 'form-check-label' %>
     </div>
   <% end %>
@@ -51,5 +51,5 @@
 </div>
 
 <div class="text-center">
-  <%= form.submit form.object.new_record? ? '作成する' : '更新する', class: 'btn btn-primary btn-lg' %>
+  <%= form.submit form.object.new_record? ? '作成する' : '更新する', class: 'btn submit-button' %>
 </div>

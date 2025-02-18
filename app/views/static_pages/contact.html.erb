@@ -7,22 +7,22 @@
     <div class="col-md-8">
       <%= form_with url: contact_path, method: :post, local: true, class: "needs-validation", novalidate: true do |f| %>
         <div class="mb-3">
-          <%= f.label :name, "お名前", class: "form-label" %>
+          <%= f.label :name, "お名前", class: "form-label text-white" %>
           <%= f.text_field :name, class: "form-control", required: true, placeholder: "例: 山田 太郎" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.label :email, "メールアドレス", class: "form-label text-white" %>
           <%= f.email_field :email, class: "form-control", required: true, placeholder: "例: example@example.com" %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :message, "お問い合わせ内容", class: "form-label" %>
+          <%= f.label :message, "お問い合わせ内容", class: "form-label text-white" %>
           <%= f.text_area :message, class: "form-control", rows: 5, required: true, placeholder: "お問い合わせ内容をご記入ください。" %>
         </div>
 
         <div class="text-center">
-          <%= f.submit "送信", class: "btn btn-primary" %>
+          <%= f.submit "送信", class: "btn submit-button" %>
         </div>
       <% end %>
     </div>
