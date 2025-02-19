@@ -25,7 +25,7 @@ class HabitsController < ApplicationController
   end
 
   def show
-    @encouragement = get_encouragement_message(current_user.id) 
+    @encouragement = EncouragementService.get_message(@habit.habit_name)
   end
 
   def edit; end
@@ -54,10 +54,5 @@ class HabitsController < ApplicationController
 
   def habit_params
     params.require(:habit).permit(:habit_name, :description, :start_date, :end_date, :tag_list, :notification_time, notification_days: [])
-  end
-
-  def get_encouragement_message(user_id)
-    client = OpenAiClient.new
-    client.ask_question("私は「#{@habit.habit_name}」を続けています。やる気が出るような励ましの言葉を日本語でお願いします。")
   end
 end
