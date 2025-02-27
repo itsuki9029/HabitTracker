@@ -38,27 +38,29 @@
 
 | ユーザー登録 / ログイン |
 | :---: | 
-| ![LINEログイン](https://gyazo.com/8326e6d63494ded6577d8b140ad54308) |
+| ![ユーザー登録](https://gyazo.com/8685ec31d7ed1c322388573fd77c0394) |
+| ![LINEログイン](https://gyazo.com/bffddadc846f04499693da02a984c63b) |
 | <p align="left">『名前』『メールアドレス』『パスワード』『確認用パスワード』を入力してユーザー登録を行います。LINEアカウントでのログインも可能です。</p> |
 
 | 習慣登録 / リマインダー通知 |
 | :---: | 
-| ![習慣登録](https://i.gyazo.com/sample.gif) |
+| ![習慣作成](https://gyazo.com/544b20b751f73344c4455f3dfbc48658) |
 | <p align="left">習慣を登録し、LINE通知でリマインドを受け取ることができます。曜日・時間を指定可能です。</p> |
 
 | 習慣の記録と進捗確認 |
 | :---: | 
-| ![進捗確認](https://i.gyazo.com/sample.gif) |
+| ![進捗確認](https://gyazo.com/7d9d2c69c79bc1ebe90a6b71c0bb1d11) |
 | <p align="left">達成した習慣をカレンダー上で確認し、モチベーションを維持できます。</p> |
 
-| ジョージ(AIアシスタント)による励ましメッセージ |
+| ジョージ(AIアシスタント)による励ましメッセージと質問コーナー |
 | :---: | 
-| ![励ましメッセージ](https://i.gyazo.com/sample.gif) |
+| ![励ましメッセージ](https://gyazo.com/b53dbb58a4ab46c5ccf669f3e3315d7c) |
+| ![ジョージに質問](https://gyazo.com/1785cc32e16a1e6fb4ece4082c9a3785) |
 | <p align="left">OpenAI APIを活用し、習慣の進捗に応じた励ましの言葉を生成します。</p> |
 
 | フォロー機能 |
 | :---: | 
-| ![フォロー機能](https://i.gyazo.com/sample.gif) |
+| ![フォロー機能]() |
 | <p align="left">友人や家族をフォローし合うことで習慣の達成状況を共有し、フォロワー同士で励まし合うことができます。</p> |
 
 ## 🛠 技術構成について
