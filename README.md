@@ -38,7 +38,7 @@
 
 | ユーザー登録 / ログイン |
 | :---: | 
-| ![ユーザー登録](https://gyazo.com/8685ec31d7ed1c322388573fd77c0394) |
+| ![Image from Gyazo](https://gyazo.com/8685ec31d7ed1c322388573fd77c0394) |
 | ![LINEログイン](https://gyazo.com/bffddadc846f04499693da02a984c63b) |
 | <p align="left">『名前』『メールアドレス』『パスワード』『確認用パスワード』を入力してユーザー登録を行います。LINEアカウントでのログインも可能です。</p> |
 
